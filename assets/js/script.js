@@ -36,7 +36,7 @@ for (let i = hours.start; i <= hours.end; i++) {
   textArea.val(localStorage.getItem(i));
 
   let hourDisplay = moment(`2023-01-01T${i < 10 ? "0" + i : i}:00:00`).format(
-    "ha"
+    "HA"
   );
   textAreaBlock.append(label).html(`<span class="hour">${hourDisplay}</span>`);
   textAreaBlock.append(textArea);
@@ -66,7 +66,7 @@ function saveStorage(e) {
     displaySavedMessage();
   }
 }
-// Function that handle the saved message display
+// Function that handle display saved message
 function displaySavedMessage() {
   const displayMessage = $("#saved-message");
   displayMessage.toggleClass("hideMessage");

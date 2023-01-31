@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family:'Courier New', Courier, monospace
   font-size: 16px;
   line-height: 1;
 }
@@ -75,15 +75,14 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #ffdd00;
   color: #000000;
-  border: 1px solid #000000;
+  border: 1px dashed #000000;
   height: 100%;
   width: 100px;
   font-size: large;
   font-weight: bold;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  
 }
 
 .past {
@@ -105,7 +104,7 @@ textarea:focus {
   border: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: #ffdd00;
   color: rgb(255, 255, 255);
   height: 100%;
   width: 100px;
