@@ -66,3 +66,11 @@ function saveStorage(e) {
     displaySavedMessage();
   }
 }
+// Function that handle the saved message display
+function displaySavedMessage() {
+  const displayMessage = $("#saved-message");
+  displayMessage.toggleClass("hideMessage");
+  setTimeout(() => {
+    displayMessage.toggleClass("hideMessage");
+  }, 2000);
+}
