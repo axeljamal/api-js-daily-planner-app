@@ -1,6 +1,5 @@
 const currentDay = $("#currentDay");
 const scheduler = $(".container");
-let hours = { start: 9, end: 17 };
 
 // Display current day time function
 
@@ -11,21 +10,22 @@ function displayTime() {
 
 displayTime();
 
-// Logic to display the elements on the screen
+// Loop to display the hour elements on the screen
+let hours = { start: 9, end: 17 };
 
 for (let i = hours.start; i <= hours.end; i++) {
   // create textAreaBlock <div> element with class of text-block
-  let textAreaBlock = $("div").attr("class", "text-block");
+  let textAreaBlock = $("<div>").attr("class", "text-block");
   // Append to scheduler
   scheduler.append(textAreaBlock);
 
   //Button
-  let btnSave = $("</button arias-label='save-button'>");
+  let btnSave = $("<button arias-label='save-button'/>");
   btnSave.addClass("saveBtn");
   btnSave.attr("data-hour", i);
   btnSave.html("<i class='fas  fa-save'></i>");
   //Even listener for saveStorages
-  btnSave.on("click", saveBtnHandler);
+  btnSave.on("click", saveStorage);
 
   //Hour <span> element
   let label = $("<span>");
@@ -38,18 +38,31 @@ for (let i = hours.start; i <= hours.end; i++) {
   let hourDisplay = moment(`2023-01-01T${i < 10 ? "0" + i : i}:00:00`).format(
     "ha"
   );
-  textAreaBlock.append(label).html(`<span class="hour">${ho}</span>`);
-  textAreaBlock.append(textarea);
+  textAreaBlock.append(label).html(`<span class="hour">${hourDisplay}</span>`);
+  textAreaBlock.append(textArea);
   textAreaBlock.append(btnSave);
 
   let timeCurrent = moment().format("H");
 
   // Conditional for color background display
   if (i < timeCurrent) {
-    textarea.addClass("past");
+    textArea.addClass("past");
   } else if (i <= timeCurrent) {
-    textarea.addClass("present");
+    textArea.addClass("present");
   } else {
-    textarea.addClass("future");
+    textArea.addClass("future");
+  }
+}
+// Function that handle the saving to local storage
+function saveStorage(e) {
+  let button = $(e.currentTarget);
+  let hour = button.attr("data-hour");
+  let textarea = $(`#${hour}`);
+
+  if (textarea.val().trim() === "") {
+    localStorage.removeItem(hour);
+  } else {
+    localStorage.setItem(hour, textarea.val());
+    displaySavedMessage();
   }
 }
