@@ -1,4 +1,5 @@
 const currentDay = $("#currentDay");
+const scheduler = $(".container");
 
 // Display current day time function
 
@@ -8,3 +9,8 @@ function displayTime() {
 }
 
 displayTime();
+
+// create textAreaBlock <div> element with class of text-block
+let textAreaBlock = $("div").attr("class", "text-block");
+// Append to scheduler
+scheduler.append(textAreaBlock);
