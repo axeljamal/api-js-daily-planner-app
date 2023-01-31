@@ -14,3 +14,11 @@ displayTime();
 let textAreaBlock = $("div").attr("class", "text-block");
 // Append to scheduler
 scheduler.append(textAreaBlock);
+
+//Hour <span> element
+let hour = $("<span>").attr("class", "hour");
+//Text area element
+let textArea = $("textarea>");
+
+//Button
+let button = $("</button>").attr("class", "saveBtn");
