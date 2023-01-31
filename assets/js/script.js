@@ -13,35 +13,43 @@ displayTime();
 
 // Logic to display the elements on the screen
 
-
-
 for (let i = hours.start; i <= hours.end; i++) {
   // create textAreaBlock <div> element with class of text-block
   let textAreaBlock = $("div").attr("class", "text-block");
   // Append to scheduler
   scheduler.append(textAreaBlock);
 
+  //Button
+  let btnSave = $("</button arias-label='save-button'>");
+  btnSave.addClass("saveBtn");
+  btnSave.attr("data-hour", i);
+  btnSave.html("<i class='fas  fa-save'></i>");
+  //Even listener for saveStorages
+  btnSave.on("click", saveBtnHandler);
+
   //Hour <span> element
-  let hour = $("<span>");
+  let label = $("<span>");
 
   //Text area element
-  let textArea = $("textarea>");
-  textArea = $("<textarea aria-label='save-button'>");
+  let textArea = $("<textarea aria-label='event'>");
   textArea.attr("id", i);
   textArea.val(localStorage.getItem(i));
 
-  //Button
-  let button = $("</button>").attr("class", "saveBtn");
-  button.attr("data-hour", i);
-  button.html("<i class='fas  fa-save'></i>");
-  //Even listener for saveStorage
-  button.on("click", saveStorage);
-  
-  let hoursBlock = moment(`2023-01-01T${i < 10 ? "0" + i : i}:00:00).format("ha");
-  textAreaBlock.append(hour).html(`<span class="hour">${hoursBlock}</span>`)
-  textAreaBlock.append(textArea);
-  textAreaBlock.append(button);
-  
+  let hourDisplay = moment(`2023-01-01T${i < 10 ? "0" + i : i}:00:00`).format(
+    "ha"
+  );
+  textAreaBlock.append(label).html(`<span class="hour">${ho}</span>`);
+  textAreaBlock.append(textarea);
+  textAreaBlock.append(btnSave);
 
-  
+  let timeCurrent = moment().format("H");
+
+  // Conditional for color background display
+  if (i < timeCurrent) {
+    textarea.addClass("past");
+  } else if (i <= timeCurrent) {
+    textarea.addClass("present");
+  } else {
+    textarea.addClass("future");
+  }
 }
