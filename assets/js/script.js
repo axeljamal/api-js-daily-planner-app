@@ -4,7 +4,7 @@ const scheduler = $(".container");
 // Display current day time function
 
 function displayTime() {
-  let today = moment().format("dddd, MMMM Do");
+  let today = moment().format("dddd, MMMM Do HH:mm A ");
   currentDay.text(today);
 }
 
@@ -24,19 +24,19 @@ for (let i = hours.start; i <= hours.end; i++) {
   btnSave.addClass("saveBtn");
   btnSave.attr("data-hour", i);
   btnSave.html("<i class='fas  fa-save'></i>");
-  //Even listener for saveStorages
+  //Even listener for saveStorage
   btnSave.on("click", saveStorage);
 
   //Hour <span> element
   let label = $("<span>");
 
-  //Text area element
+  //Text area element for accessability
   let textArea = $("<textarea aria-label='event'>");
   textArea.attr("id", i);
   textArea.val(localStorage.getItem(i));
 
   let hourDisplay = moment(`2023-01-01T${i < 10 ? "0" + i : i}:00:00`).format(
-    "HA"
+    "hA"
   );
   textAreaBlock.append(label).html(`<span class="hour">${hourDisplay}</span>`);
   textAreaBlock.append(textArea);

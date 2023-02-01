@@ -1,5 +1,5 @@
 body {
-  font-family:'Courier New', Courier, monospace
+  font-family: system-ui, "-apple-system";
   font-size: 16px;
   line-height: 1;
 }
@@ -81,8 +81,7 @@ textarea:focus {
   height: 100%;
   width: 100px;
   font-size: large;
-  font-weight: bold;
-  
+  font-weight: 500;
 }
 
 .past {
@@ -91,12 +90,12 @@ textarea:focus {
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #ff8235;
   color: black;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #b298ff;
   color: black;
 }
 
